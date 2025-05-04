@@ -1,0 +1,18 @@
+@keyframes bg-swap {
+  0% {
+    background-image: var(--image1);
+  }
+  33% {
+    background-image: var(--image2);
+  }
+  66% {
+    background-image: var(--image3);
+  }
+  100% {
+    background-image: var(--image1);
+  }
+}
+
+.animate-background-swap {
+  animation: bg-swap 21s infinite;
+}

@@ -1,0 +1,30 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [76.550343, 30.665957]
+      },
+      "properties": {
+        "name": "Main Emergency Shelter",
+        "type": "Shelter",
+        "capacity": 200,
+        "contact": "+91 98765 43210"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [76.5512, 30.6671]
+      },
+      "properties": {
+        "name": "Medical Camp Alpha",
+        "type": "Medical",
+        "contact": "+91 98765 12345"
+      }
+    }
+  ]
+}
