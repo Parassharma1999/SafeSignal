@@ -1,7 +1,6 @@
-import { StrictMode, useContext } from "react";
+import { StrictMode } from "react";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import Navbar from "./navbar/index.jsx";
@@ -20,7 +19,6 @@ import ContactUs from "./Component/ContactUs.jsx";
 import Aboutus from "./Component/AboutUs.jsx";
 import UserProfile from "./Component/UserProfile.jsx";
 import SignupModalContext from "./utils/signUpModalContext.jsx";
-import ProtectedRoute from "./protectedRoute.jsx";
 import { Provider } from "react-redux";
 import userStore from "./utils/userStore.jsx";
 
