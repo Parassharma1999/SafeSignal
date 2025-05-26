@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 import logo from "../assets/images-disaster/Logo.png";
 import axios from "axios";
+import { baseURL } from "../../baseurl";
 
 const VictimRequestCard = ({
   request,
@@ -13,7 +14,7 @@ const VictimRequestCard = ({
   const handleAcceptRequest = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/accept-help-request/${request._id}`,
+        `${baseURL}/accept-help-request/${request._id}`,
         {
           withCredentials: true,
         }
@@ -39,7 +40,7 @@ const VictimRequestCard = ({
   const handleRejectRequest = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/reject-help-request/${request._id}`,
+        `${baseURL}/reject-help-request/${request._id}`,
         {
           withCredentials: true,
         }

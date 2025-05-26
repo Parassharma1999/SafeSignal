@@ -6,6 +6,7 @@ import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import axios from "axios";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import VictimRequestCard from "../Component/VictimRequestCard";
+import { baseURL } from "../../baseurl";
 
 // Fix Leaflet marker icons
 delete L.Icon.Default.prototype._getIconUrl;
@@ -158,10 +159,10 @@ const MapVictimComponent = () => {
 
   const findVictims = async (lat, long) => {
     try {
-      const volunteers = await axios.post(
-        "http://localhost:3000/search-victims",
-        { lat, long }
-      );
+      const volunteers = await axios.post(`${baseURL}/search-victims`, {
+        lat,
+        long,
+      });
       setAllVictims(volunteers.data?.data);
     } catch (error) {
       console.log("Error => ", error);
@@ -212,7 +213,7 @@ const MapVictimComponent = () => {
     setSearchParams(params);
 
     try {
-      const res = await axios.get("http://localhost:3000/search-victims", {
+      const res = await axios.get(`${baseURL}/search-victims`, {
         params,
       });
       if (res.data?.success) {

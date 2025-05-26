@@ -7,6 +7,7 @@ import axios from "axios";
 import { Navigate, useSearchParams } from "react-router-dom";
 import logo from "../assets/images-disaster/Logo.png";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from "../../baseurl";
 
 // Fix Leaflet marker icons
 delete L.Icon.Default.prototype._getIconUrl;
@@ -154,10 +155,10 @@ const MapVolunteerComponent = () => {
 
   const findVolunteers = async (lat, long) => {
     try {
-      const volunteers = await axios.post(
-        "http://localhost:3000/search-volunteers",
-        { lat, long }
-      );
+      const volunteers = await axios.post(`${baseURL}/search-volunteers`, {
+        lat,
+        long,
+      });
       setAllVolunteers(volunteers.data?.data);
     } catch (error) {
       console.log("Error => ", error);
@@ -214,7 +215,7 @@ const MapVolunteerComponent = () => {
     };
 
     try {
-      const res = await axios.get(`http://localhost:3000/search-volunteers`, {
+      const res = await axios.get(`${baseURL}/search-volunteers`, {
         params,
       });
       setAllVolunteers(res.data?.data);

@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { modalContext } from "../utils/signUpModalContext";
 import NoData from "../assets/Icons/No Data.svg";
 import { toast } from "react-toastify";
+import { baseURL } from "../../baseurl";
 
 const ProfilePage = () => {
   // State for user data
@@ -18,7 +19,7 @@ const ProfilePage = () => {
   }, []);
   const getUserProfile = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/user-profile", {
+      const res = await axios.get(`${baseURL}/user-profile`, {
         withCredentials: true,
       });
       if (res.data?.success) {
@@ -34,7 +35,7 @@ const ProfilePage = () => {
   const handleCancelRequest = async (request) => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/cancel-help-request/${request._id}`,
+        `${baseURL}/cancel-help-request/${request._id}`,
         {
           withCredentials: true,
         }
@@ -56,7 +57,7 @@ const ProfilePage = () => {
   const handleCompleteRequest = async (request) => {
     try {
       const res = await axios.patch(
-        `http://localhost:3000/complete-help-request/${request._id}`,
+        `${baseURL}/complete-help-request/${request._id}`,
         {},
         {
           withCredentials: true,
@@ -78,7 +79,7 @@ const ProfilePage = () => {
   const updateUserProfile = async () => {
     try {
       const res = await axios.patch(
-        "http://localhost:3000/update-user-profile",
+        `${baseURL}/update-user-profile`,
         {
           name: userData?.name,
         },
@@ -118,7 +119,7 @@ const ProfilePage = () => {
   const handleAcceptRequest = async (request) => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/accept-help-request/${request._id}`,
+        `${baseURL}/accept-help-request/${request._id}`,
         {
           withCredentials: true,
         }
@@ -139,7 +140,7 @@ const ProfilePage = () => {
   const handleRejectRequest = async (request) => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/reject-help-request/${request._id}`,
+        `${baseURL}/reject-help-request/${request._id}`,
         {
           withCredentials: true,
         }

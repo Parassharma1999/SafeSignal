@@ -64,7 +64,7 @@ export default function VictimForm() {
     console.log("send Email");
     try {
       const response = await axios.post(
-        "http://localhost:3000/emergency-request",
+        "`${baseURL}/emergency-request",
         {
           email: state.volunteer?.email,
           to: state.volunteer?.phone,
@@ -90,13 +90,9 @@ export default function VictimForm() {
 
   async function PostingVictimForm() {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/victim/form",
-        formData,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.post("`${baseURL}/victim/form", formData, {
+        withCredentials: true,
+      });
       if (response.status === 200) {
         console.log("successfully submitted", response.data);
         await sendOutRequest();

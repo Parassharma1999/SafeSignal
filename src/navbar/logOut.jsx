@@ -3,6 +3,7 @@ import { useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from "../../baseurl";
 
 const LogOut = ({ setIsOpen }) => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const LogOut = ({ setIsOpen }) => {
   async function LogOutUser() {
     try {
       const response = await axios.post(
-        "http://localhost:3000/logout",
+        `${baseURL}/logout`,
         {},
         { withCredentials: true }
       );

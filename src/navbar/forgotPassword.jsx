@@ -1,6 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { baseURL } from "../../baseurl";
 
 const ForgotPassword = () => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -13,7 +14,7 @@ const ForgotPassword = () => {
   async function ForgotPasswordAPI() {
     try {
       const response = await axios.post(
-        "http://localhost:3000/forgot-password",
+        `${baseURL}/forgot-password`,
         emailForForgotPassword,
         { withCredentials: true }
       );

@@ -8,6 +8,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { FiMail, FiLock, FiUserPlus } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { baseURL } from "../../baseurl";
 
 const LogInModal = () => {
   const {
@@ -43,13 +44,9 @@ const LogInModal = () => {
 
   async function LogInPosting() {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/login",
-        logInForm,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.post(`${baseURL}/login`, logInForm, {
+        withCredentials: true,
+      });
       if (response.status === 200) {
         console.log("successfully submitted", response);
         setLogInForm({

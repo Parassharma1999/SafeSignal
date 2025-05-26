@@ -5,6 +5,7 @@ import volunteer2 from "../assets/images-disaster/signupcall.svg";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from "../../baseurl";
 
 const SignUpVolunteer = () => {
   const { showModal, setShowModal, setLogInContext } = useContext(modalContext);
@@ -35,7 +36,7 @@ const SignUpVolunteer = () => {
   async function SignupVolunteer() {
     try {
       const response = await axios.post(
-        "http://localhost:3000/signup/volunteer",
+        `${baseURL}/signup/volunteer`,
         signupForm
       );
       if (response.status === 200) {
@@ -57,10 +58,7 @@ const SignUpVolunteer = () => {
   }
   async function SignupVictim() {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/signup/victim",
-        signupForm
-      );
+      const response = await axios.post(`${baseURL}/signup/victim`, signupForm);
       if (response.status === 200) {
         console.log("successfully submitted", response.data);
         toast.success("successfully submitted");

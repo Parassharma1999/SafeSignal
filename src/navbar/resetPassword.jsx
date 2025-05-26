@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
+import { baseURL } from "../../baseurl";
 
 export default function ResetPassword() {
   const params = useParams("");
@@ -18,7 +19,7 @@ export default function ResetPassword() {
     async function GetResetPasswordToken() {
       try {
         const response = await axios.get(
-          "http://localhost:3000/reset-password/" + `${params.token}`
+          `${baseURL}/reset-password/` + `${params.token}`
         );
         const token = response.data;
         console.log("token", token);
@@ -38,7 +39,7 @@ export default function ResetPassword() {
   async function UpdateNewPassword() {
     try {
       const response = await axios.post(
-        `http://localhost:3000/reset-password/${params.token}`,
+        `${baseURL}/reset-password/${params.token}`,
         newPassword,
         { withCredentials: true }
       );

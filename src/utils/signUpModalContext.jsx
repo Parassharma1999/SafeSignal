@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect } from "react";
 import { useState } from "react";
+import { baseURL } from "../../baseurl";
 
 export const modalContext = createContext(false);
 
@@ -18,7 +19,7 @@ export default function SignupModalContext({ children }) {
 
   async function CheckUserLoggedIn() {
     try {
-      const response = await axios.get("http://localhost:3000/", {
+      const response = await axios.get(`${baseURL}/`, {
         withCredentials: true,
       });
       if (response.data?.success) {
@@ -36,12 +37,9 @@ export default function SignupModalContext({ children }) {
 
   async function getAllNotifications() {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/get-notifications",
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get(`${baseURL}/get-notifications`, {
+        withCredentials: true,
+      });
       if (response.data?.success) {
         setAllNotifications(response.data?.data);
       }
